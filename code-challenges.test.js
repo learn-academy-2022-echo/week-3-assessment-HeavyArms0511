@@ -1,6 +1,5 @@
 // ASSESSMENT 3: Coding Practical Questions with Jest
 
-const { array } = require("yargs")
 
 // Please read all questions thoroughly
 // Pseudo coding is REQUIRED
@@ -132,6 +131,29 @@ const oddOnly = (array) => {
 
 // a) Create a test with expect statements for each of the variables provided.
 
+describe("sumAll", () => {
+    it("takes in an array and returns an array of the accumulating sum. An empty array should return an empty array", () => {
+        expect(sumAll(numbersToAdd1)).toEqual([2, 6, 51, 60])
+        expect(sumAll(numbersToAdd2)).toEqual([0, 7, -1, 11])
+        expect(sumAll(numbersToAdd3)).toEqual([])
+    })
+})
+
+// FAIL  ./code-challenges.test.js
+//   fibonacci
+//     ✓ takes in a number and returns an array that length containing the numbers of the Fibonacci sequence (2 ms)
+//   oddOnly
+//     ✓ takes in an array and returns a new array of only odd numbers sorted from least to greatest
+//   sumAll
+//     ✕ takes in an array and returns an array of the accumulating sum. An empty array should return an empty array
+
+//   ● sumAll › takes in an array and returns an array of the accumulating sum. An empty array should return an empty array
+
+//     ReferenceError: sumAll is not defined
+
+
+// b) Create the function that makes the test pass.
+
 const numbersToAdd1 = [2, 4, 45, 9]
 // Expected output: [2, 6, 51, 60]
 
@@ -142,4 +164,33 @@ const numbersToAdd3 = []
 // Expected output: []
 
 
-// b) Create the function that makes the test pass.
+// Psuedo Code:
+// Create a function named sumAll
+// Input: take in an arrray and add the numbers up in ascending order from 0 index to the last index
+// Output:
+// numbersToAdd1: [2, 6, 51, 60]
+// numbersToAdd2: [0, 7, -8, 12]
+// numbersToAdd3: []
+
+
+const sumAll = (array) => {
+  for(i = 1; i < array.length; i++){
+    array[i] = array[i] + array[i - 1]
+  }
+  return array
+}
+
+// PASS  ./code-challenges.test.js
+// fibonacci
+//   ✓ takes in a number and returns an array that length containing the numbers of the Fibonacci sequence (2 ms)
+// oddOnly
+//   ✓ takes in an array and returns a new array of only odd numbers sorted from least to greatest
+// sumAll
+//   ✓ takes in an array and returns an array of the accumulating sum. An empty array should return an empty array
+
+// Test Suites: 1 passed, 1 total
+// Tests:       3 passed, 3 total
+// Snapshots:   0 total
+// Time:        0.409 s, estimated 1 s
+// Ran all test suites.
+// ✨  Done in 1.14s.
